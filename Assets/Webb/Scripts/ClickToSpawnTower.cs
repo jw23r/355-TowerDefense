@@ -118,32 +118,30 @@ namespace Webb
         {
             if (Input.GetButtonDown("Fire2"))
             {
-                GridCoords grid = CoordsWorldToGrid(gridHelper.position);
-                if (IsValidGridCoords(grid))
+
+                if (buildDarkTower == true && HUDController.gold >= 100)
                 {
-                    Tower exstingTower = LookUpTower(grid);
-                    if (exstingTower == null)
-                    {
-                        if (buildDarkTower == true)
-                        {
-                            Tower tower = Instantiate(towerPrefab, gridHelper.position, Quaternion.identity); 
-
-                            towers[grid.x, grid.y] = tower;
-                        }
-                        if (buildLightTower == true)
-                        {
-                            Tower tower = Instantiate(towerPrefabLight, gridHelper.position, Quaternion.identity);
-
-                            towers[grid.x, grid.y] = tower;
-                        }
-                        if (buildNatrueTower == true)
-                        {
-                            Tower tower = Instantiate(towerPrefabNature, gridHelper.position, Quaternion.identity);
-
-                            towers[grid.x, grid.y] = tower;
-                        }
-                    }
+                    Tower tower = Instantiate(towerPrefab, gridHelper.position, Quaternion.identity);
+                    HUDController.gold -= 100;
+                    // towers[grid.x, grid.y] = tower;
                 }
+                if (buildLightTower == true && HUDController.gold >= 150)
+                {
+                    Tower tower = Instantiate(towerPrefabLight, gridHelper.position, Quaternion.identity);
+                    HUDController.gold -= 150;
+
+                    // towers[grid.x, grid.y] = tower;
+                }
+                if (buildNatrueTower == true && HUDController.gold >= 200)
+                {
+                    Tower tower = Instantiate(towerPrefabNature, gridHelper.position, Quaternion.identity);
+                    HUDController.gold -= 200;
+
+                    // towers[grid.x, grid.y] = tower;
+                }
+
+
+
             }
         }
         /// <summary>
@@ -214,7 +212,7 @@ namespace Webb
                 bool isVaildPos = IsValidGridCoords(gridPos);
                 gridHelper.gameObject.SetActive(isVaildPos);
                 Vector3 worldPos = CoordsGridToWorld(gridPos);
-                worldPos.y = hit.point.y + +0.01f;
+                worldPos.y = hit.point.y + +1.01f;
                 gridHelper.position = worldPos;
                 // tell new agent to go where we clicked
 

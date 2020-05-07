@@ -9,6 +9,7 @@ namespace Webb {
     {
         Vector3 attackTarget;// stores dir to player
         public float speed = 50;// how fast it moves
+        float time = .2f;
         // Start is called before the first frame update
         /// <summary>
         /// gets postion of enemy
@@ -25,6 +26,11 @@ namespace Webb {
         /// </summary>
         void Update()
         {
+            time -= Time.deltaTime;
+            if(time <= 0)
+            {
+                Destroy(gameObject);
+            }
             Vector3 dirToPlayer = (attackTarget - transform.position);
             transform.position += dirToPlayer.normalized * speed * Time.deltaTime;
             

@@ -23,7 +23,7 @@ namespace Webb
         LineRenderer line;// shows the path
        public EnemyGoal goal;  // passes in whaht enemy to attak
         public Image healthBar;// gets refrence to helath bar
-        int health = 100; //keeps track of current health
+        int health = 220; //keeps track of current health
       public  bool isAttackState;// checks if its attacking
 
         float timerAttackCooldown = 0; // keeps track of how long before next attack
@@ -77,8 +77,12 @@ coins.Stop();
         /// updates health bar
         /// </summary>
         public void EnemyHealth() {
-            healthBar.fillAmount = health / 100;
-            if (health <= 0) Destroy(gameObject); 
+            healthBar.fillAmount = health / 200;
+            if (health <= 0)
+            {
+                HUDController.gold += 25;
+                Destroy(gameObject);
+            }
                 }
             public void Attack () {
            // timerAttackCooldown -= Time.deltaTime;  

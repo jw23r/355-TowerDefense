@@ -11,6 +11,8 @@ namespace Webb
         public Transform panelMain;// refrence to panal main
         public Transform panelUpgrade;// refrence to panal upgrad
         public Text panelUpgradeText; // refrence to panalupgradetext
+        static public int gold = 100;
+        public Text golds;
         void Start()
         {
 
@@ -29,16 +31,17 @@ namespace Webb
         // Update is called once per frame
         void Update()
         {
-           /** if(ClickToSpawnTower.currentlySelectedTower != null)
-            {
-                panelUpgrade.gameObject.SetActive(true); 
-                panelUpgradeText.text = ClickToSpawnTower.currentlySelectedTower.gameObject.name;
-            }
-            else
-            {
-                panelUpgrade.gameObject.SetActive(false);
-            }
-    */
+            golds.text  = $"gold:{(gold)}";
+            /** if(ClickToSpawnTower.currentlySelectedTower != null)
+             {
+                 panelUpgrade.gameObject.SetActive(true); 
+                 panelUpgradeText.text = ClickToSpawnTower.currentlySelectedTower.gameObject.name;
+             }
+             else
+             {
+                 panelUpgrade.gameObject.SetActive(false);
+             }
+     */
         }
 
     }
